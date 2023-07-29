@@ -8,6 +8,20 @@ namespace WebCoreAPI.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
+        private readonly IClassB _iclassB;
+        public StudentController(IClassB iclassB)
+        {
+            _iclassB = iclassB;
+        }
+
+        [HttpPost("CongHaiSo")]
+        public async Task<int> CongHaiSo(CongHaiSoRequestData requestData)
+        {
+            var result = await _iclassB.CongHaiSo(requestData.FirstNumber, requestData.LastNumber);
+            return result;
+        }
+
+
         [HttpGet("Students")]
         public List<StudentModels> Students()
         {
