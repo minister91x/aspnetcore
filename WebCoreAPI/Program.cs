@@ -1,3 +1,5 @@
+using WebCoreAPI;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,8 +18,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.MapControllers();
 
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Add("x-my-custom-header", "middleware QUANNT");
+    await next();
+});
+//app.UseMiddleware<CustomeMiddleWare>();
 app.Run();
