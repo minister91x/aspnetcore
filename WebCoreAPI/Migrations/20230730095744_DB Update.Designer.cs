@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebCoreAPI.EntitiesFrameWork.Dbcontext;
 
@@ -10,9 +11,10 @@ using WebCoreAPI.EntitiesFrameWork.Dbcontext;
 namespace WebCoreAPI.Migrations
 {
     [DbContext(typeof(MyShopUnitOfWorkDbContext))]
-    partial class MyShopUnitOfWorkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230730095744_DB Update")]
+    partial class DBUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

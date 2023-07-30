@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using WebCoreAPI.Models;
 
 namespace WebCoreAPI.Controllers
@@ -43,5 +45,8 @@ namespace WebCoreAPI.Controllers
 
             return list;
         }
+
+      
+
     }
 }

@@ -14,5 +14,7 @@ namespace WebCoreAPI.EntitiesFrameWork.Dbcontext
         }
         public DbSet<Product>? sanpham { get; set; }
 
+        public DbSet<User> user { get; set; }
+
     }
 }
