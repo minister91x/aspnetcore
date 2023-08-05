@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -14,6 +15,10 @@ ConfigurationManager configuration = builder.Configuration;
 
 builder.Services.AddDbContext<MyShopUnitOfWorkDbContext>(options =>
                options.UseSqlServer(configuration.GetConnectionString("ConnStr")));
+
+
+//builder.Services.AddDbContext<ApplicationDbContext>(
+//    options => options.UseSqlServer(configuration.GetConnectionString("ConnStr"))); // For Identity builder.Services.AddIdentity<IdentityUser, IdentityRole>() .AddEntityFrameworkStores<ApplicationDbContext>() .AddDefaultTokenProviders(); 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -40,6 +45,8 @@ builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IProductGenericRepository, ProductGenericRepository>();
 builder.Services.AddTransient<IAccountRepository, AccountRepository>();
 builder.Services.AddTransient<IMyShopUnitOfWork, MyShopUnitOfWork>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+        .AddEntityFrameworkStores<MyShopUnitOfWorkDbContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

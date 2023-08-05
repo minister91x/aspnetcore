@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using WebCoreAPI.EntitiesFrameWork.Entities;
 
 namespace WebCoreAPI.EntitiesFrameWork.Dbcontext
 {
-    public class MyShopUnitOfWorkDbContext : Microsoft.EntityFrameworkCore.DbContext
+    public class MyShopUnitOfWorkDbContext : IdentityDbContext<IdentityUser>
     {
         public MyShopUnitOfWorkDbContext(DbContextOptions options) : base(options)
         {
